@@ -1,27 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+*,
+::after,
+::before {
+  scroll-behavior: smooth;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+html {
+  height: 100%;
+}
+
+.load {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  top: calc(50% - 28px);
+  left: calc(50% - 28px);
+  margin: auto;
+  filter: url("#goo");
+}
+
+.custom {
+  z-index: 50 !important;
+}
+
+.animate {
+  animation: stickys 1.5s cubic-bezier(0.28, 0.84, 0.42, 1) 1.5s infinite normal
+    none running;
+  opacity: 0.8;
+}
+
+.-animate {
+  animation: sticky cubic-bezier(0.28, 0.84, 0.42, 1) 1.5s infinite normal none
+    running;
+  transition: transform 0.3s ease-in-out;
+  opacity: 0.8;
+}
+
+@keyframes stickys {
+  0% {
+    transform: translateY(60%);
+  }
+  50% {
+    transform: translateY(-60%);
+  }
+
+  100% {
+    transform: translateY(60%);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes sticky {
+  0% {
+    transform: translateY(-60%);
+  }
+  50% {
+    transform: translateY(60%);
+  }
+
+  100% {
+    transform: translateY(-60%);
+  }
+}
+
+.expection {
+  overflow: hidden !important;
+}
+
+.shadow-custom {
+  box-shadow: 0 119px 179px #5c57431c, 0 49.7154px 74.7819px #5c574314,
+    0 26.5802px 39.982px #5c574311, 0 14.9006px 22.4136px #5c57430e,
+    0 7.91362px 11.9037px #5c57430b, 0 3.29304px 4.95339px #5c574308;
+}
+
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-in-out;
 }
