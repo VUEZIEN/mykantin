@@ -4,17 +4,19 @@ import { useEffect, useState } from "react";
 import { Aside } from "./components/aside";
 import { Head } from "./components/header";
 import useKategoriModule from "./lib";
-import { useDisclosure } from "@/hook/useDisclosure";
-import DishDetailModal from "./components/popp";
+import DishDetailModal from "./components/popup";
+import { DishiListResponse } from "./interface";
 
 const MyKantin = () => {
   const { useKategoriList, useDishList } = useKategoriModule();
   const { data: kategoriData } = useKategoriList();
   const { data: dishData } = useDishList();
+  const [selectedItems, setSelectedItems] = useState([]);
+const [totalPrice, setTotalPrice] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedDish, setSelectedDish] = useState(null);
+  const [isModalVisible, setModalVisible] = useState<boolean>(true);
+  const [selectedDish, setSelectedDish] = useState<DishiListResponse | null>(null);
   useEffect(() => {}, [kategoriData, dishData]);
-
   const filteredDishes = dishData.filter((dishItem) => {
     if (selectedCategory === "masakan") {
       return (
@@ -29,6 +31,11 @@ const MyKantin = () => {
       return true;
     }
   });
+
+  const openModal = (dishItem: DishiListResponse) => {
+    setSelectedDish(dishItem);
+    setModalVisible(true);
+  };
 
   return (
     <>
@@ -96,17 +103,17 @@ const MyKantin = () => {
               ))}
             </section>
           </div>
-          {selectedDish && <DishDetailModal dishItem={selectedDish} />}
+          {selectedDish && <DishDetailModal dishItem={selectedDish}  onClose={() => setSelectedDish(null)}  />}
           <div className="text-3xl font-bold py-10">Populer</div>
           <section className="grid grid-cols-3 gap-4">
             {filteredDishes.map((dishItem, index) => (
-              <div key={index} className="flex flex-col">
-                <button
-                  className="relative"
-                  onClick={() => {
-                    setSelectedDish(dishItem);
-                  }}
-                >
+              <div
+                key={index}
+                onClick={() => openModal(dishItem)} 
+                className="flex flex-col cursor-pointer"
+              >
+                <div
+                 className="relative px-sd">
                   <img
                     src={dishItem.image}
                     alt={dishItem.name}
@@ -116,7 +123,7 @@ const MyKantin = () => {
                   <h1 className="text-base font-semibold rounded-full px-2 w-auto  h-auto bg-[#FFFFFFEB] absolute bottom-2 left-2">
                     {dishItem.waktu}
                   </h1>
-                </button>
+                </div>
                 <span>
                   <h1 className="font-semibold">{dishItem.name}</h1>
                   <div className="flex space-x-8">

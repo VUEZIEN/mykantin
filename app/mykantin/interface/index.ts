@@ -4,7 +4,7 @@ interface Category {
   img: string;
 }
 
-interface Dish {
+export interface Dish {
   name: string;
   harga: number;
   waktu: string;

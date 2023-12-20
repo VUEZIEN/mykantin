@@ -1,6 +1,6 @@
 export const Aside = () => {
   return (
-    <aside className="bg-[#FCFCFCE5] fixed right-0 z-40 h-full px-4 w-[375px]">
+    <aside className="bg-[#FCFCFCE5] backdrop-blur-md  fixed right-0 z-40 h-full px-4 w-[375px]">
       <div className="flex justify-end p-4">
         <div className="flex space-x-6  items-center">
           <svg
@@ -52,7 +52,7 @@ export const Aside = () => {
       </div>
 
       <div className="flex justify-between py-5 items-center">
-        <div className="bg-[#FFF7ED] w-12 h-10 flex items-center justify-center rounded-2xl">
+        <div className="bg-[#FFF7ED] w-16 h-10 flex items-center justify-center rounded-2xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -66,8 +66,18 @@ export const Aside = () => {
             />
           </svg>
         </div>
-        <p>jl. Bangke no 13 . . .</p>
+        <p>jl. suzume</p>
         <h3>Gratis</h3>
+      </div>
+
+      <div className="flex flex-col absolute bottom-5 left-0 right-0 p-3">
+        <span className="mb-3 flex justify-between items-center">
+          <h1 className="font-semibold text-xl">Total: </h1>
+          <h1 className="font-semibold text-xl">RP.68.000</h1>
+        </span>
+        <button className="w-full justify-center gap-2 h-[53px] font-semibold bg-primary-yellow flex  rounded-2xl items-center ">
+          Pesan sekarang &gt;{" "}
+        </button>
       </div>
     </aside>
   );
