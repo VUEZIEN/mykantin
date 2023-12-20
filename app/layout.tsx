@@ -7,27 +7,27 @@ import { Providers } from "./providers";
 const quciksand = localFont({
   src: [
     {
-      path: "../public/fonts/Quicksand-Light.ttf",
+      path: "../public/fonts/Poppins-Light.ttf",
       weight: "300",
       style: "light",
     },
     {
-      path: "../public/fonts/Quicksand-Regular.ttf",
+      path: "../public/fonts/Poppins-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/Quicksand-Medium.ttf",
+      path: "../public/fonts/Poppins-Medium.ttf",
       weight: "500",
       style: "medium",
     },
     {
-      path: "../public/fonts/Quicksand-SemiBold.ttf",
+      path: "../public/fonts/Poppins-SemiBold.ttf",
       weight: "600",
       style: "semibold",
     },
     {
-      path: "../public/fonts/Quicksand-Bold.ttf",
+      path: "../public/fonts/Poppins-Bold.ttf",
       weight: "700",
       style: "bold",
     },
